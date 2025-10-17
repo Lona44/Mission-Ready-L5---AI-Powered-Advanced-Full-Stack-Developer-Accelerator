@@ -1,0 +1,10 @@
+/**
+ * App Styles
+ *
+ * Root application container styles
+ */
+
+.app {
+  min-height: 100vh; /* Full viewport height minimum */
+  background-color: var(--vox-bg-light); /* Light gray background */
+}

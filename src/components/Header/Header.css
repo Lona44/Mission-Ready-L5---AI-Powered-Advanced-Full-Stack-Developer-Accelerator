@@ -1,0 +1,213 @@
+/**
+ * Header Component Styles
+ *
+ * Sticky navigation header with Vox-inspired yellow branding.
+ * Includes responsive hamburger menu for mobile devices.
+ */
+
+/* ========================================
+   Header Container
+   ======================================== */
+
+.header {
+  background-color: var(--vox-yellow);
+  border-bottom: 1px solid var(--vox-bg-light);
+  position: sticky;           /* Stays at top when scrolling */
+  top: 0;
+  z-index: 1000;             /* Ensures header stays above other content */
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ========================================
+   Logo Styles
+   ======================================== */
+
+.logo-link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.logo-link:hover {
+  opacity: 0.8;              /* Subtle fade on hover */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.logo-circle {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;            /* Prevent icon from shrinking */
+}
+
+/* Logo typography with bold, italic Playfair Display */
+.logo-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 900;
+  font-style: italic;
+  color: var(--vox-text-dark);
+  letter-spacing: -0.01em;
+  transform: scale(1.15, 1.05);  /* Slight horizontal stretch */
+  -webkit-text-stroke: 0.5px var(--vox-text-dark);
+  /* Text shadow for enhanced boldness */
+  text-shadow:
+    0.5px 0.5px 0 var(--vox-text-dark),
+    -0.5px -0.5px 0 var(--vox-text-dark),
+    0.5px -0.5px 0 var(--vox-text-dark),
+    -0.5px 0.5px 0 var(--vox-text-dark);
+}
+
+/* Enlarged "M" in "Manz" */
+.logo-text-large {
+  font-size: 2rem;
+  display: inline-block;
+  transform: scale(1.2, 1.15) translateY(0.05em);
+  transform-origin: left bottom;
+  margin-right: 0.15em;
+  vertical-align: baseline;
+}
+
+/* ========================================
+   Mobile Menu Toggle (Hamburger)
+   ======================================== */
+
+.menu-toggle {
+  display: none;             /* Hidden on desktop */
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+/* Hamburger menu lines */
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* ========================================
+   Navigation Links
+   ======================================== */
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: var(--vox-text-dark);
+  font-weight: 600;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+/* Animated underline on hover */
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;                  /* Starts at 0 width */
+  height: 1px;
+  background-color: var(--vox-text-dark);
+}
+
+.nav-list a:hover::after {
+  width: 100%;               /* Expands to full width on hover */
+}
+
+.nav-list a:hover {
+  color: var(--vox-text-dark);
+}
+
+/* ========================================
+   Login Button Styles
+   ======================================== */
+
+.login-btn {
+  padding: 0.5rem 1.5rem;
+  border: 2px solid var(--vox-text-dark);
+  border-radius: 2px;
+  font-weight: 700;
+}
+
+.login-btn::after {
+  display: none;             /* Disable underline animation for button */
+}
+
+.login-btn:hover {
+  background-color: var(--vox-yellow);
+  border-color: var(--vox-text-dark);
+  box-shadow: inset 0 0 0 1px var(--vox-text-dark);  /* Inner border on hover */
+  color: var(--vox-text-dark) !important;
+}
+
+/* ========================================
+   Mobile Responsive Styles
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Show hamburger menu */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Dropdown navigation */
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-height: 0;           /* Collapsed by default */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  /* Expanded state (controlled by React state) */
+  .nav-open {
+    max-height: 300px;
+  }
+
+  /* Vertical navigation list */
+  .nav-list {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .nav-list li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-list a {
+    display: block;
+    padding: 0.5rem;
+  }
+}

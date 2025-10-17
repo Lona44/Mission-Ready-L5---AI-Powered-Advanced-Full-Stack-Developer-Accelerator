@@ -1,0 +1,303 @@
+/**
+ * Hero Component Styles
+ *
+ * Main hero section with background image, headline, and integrated search.
+ * Features interactive hover effects (headline underline + faint overlay).
+ */
+
+/* ========================================
+   Hero Section Container
+   ======================================== */
+
+.hero {
+  background-color: var(--vox-white);
+  background-size: cover;                    /* Scale image to cover entire container */
+  background-position: center;
+  background-repeat: no-repeat;
+  color: var(--vox-text-dark);
+  padding: 5rem 2rem 2rem 2rem;
+  min-height: 500px;                         /* Increased height for visual impact */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;            /* Push search bar to bottom */
+  position: relative;                        /* For ::before overlay positioning */
+}
+
+/* Hover overlay effect - faint white overlay on hover */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0);  /* Transparent by default */
+  transition: background-color 0.15s ease;   /* Fast transition */
+  pointer-events: none;                      /* Allows clicks to pass through */
+  z-index: 0;                                /* Behind content */
+}
+
+/* Activate overlay when hovering hero text */
+.hero:has(.hero-text:hover)::before {
+  background-color: rgba(255, 255, 255, 0.3); /* 30% white overlay */
+}
+
+/* ========================================
+   Hero Content Layout
+   ======================================== */
+
+.hero-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+  z-index: 1;                                /* Above overlay */
+}
+
+/* Hero text container - left-aligned, width-constrained */
+.hero-text {
+  max-width: 50%;                            /* 50% width on desktop */
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;                     /* Remove default link underline */
+  color: inherit;                            /* Inherit text color from parent */
+  display: block;                            /* Make anchor behave like block element */
+}
+
+/* Underline h1 on hover */
+.hero-text:hover h1 {
+  text-decoration: underline;
+}
+
+/* Ensure underline appears on highlighted text too */
+.hero-text:hover .highlight-text {
+  text-decoration: underline;
+}
+
+/* ========================================
+   Typography Styles
+   ======================================== */
+
+.hero-text h1 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  padding-left: 1.5rem;
+  position: relative;                        /* For positioning pseudo-element */
+}
+
+/* Animated yellow border - grows from bottom to top on page load */
+.hero-text h1::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 6px;
+  height: 100%;
+  background-color: var(--vox-yellow);
+  transform-origin: bottom;                  /* Grow from bottom upward */
+  animation: borderGrow 1.2s ease-out;       /* Animation on page load */
+}
+
+/* Keyframe animation - height grows from 0 to 100% */
+@keyframes borderGrow {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+/* ========================================
+   Highlighter Marker Effect
+   ======================================== */
+
+/* Wrapper for highlighted text */
+.highlight-text {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  white-space: nowrap;                   /* Prevents wrapping - keeps "Explainer Series:" together */
+}
+
+/* Hand-drawn highlighter marker effect */
+.highlight-text::before {
+  content: '';
+  position: absolute;
+  left: -0.1em;                          /* Slight overhang on left */
+  bottom: 0.05em;                        /* Slightly offset from baseline */
+  width: calc(100% + 0.2em);             /* Extends slightly beyond text */
+  height: 65%;                           /* Covers most of text height */
+  background-color: rgba(255, 235, 0, 0.7); /* 70% opacity yellow - subtle! */
+  z-index: -1;                           /* Behind text */
+  transform-origin: left center;         /* Grows from left to right */
+  transform: scaleX(0) skewX(-3deg);     /* Starts invisible + diagonal skew */
+  border-radius: 2px;                    /* Slightly rounded for hand-drawn feel */
+  animation: highlightSweep 1.5s ease-out 1s forwards; /* Starts AFTER border (1s delay) */
+  /* Hand-drawn irregular edges */
+  box-shadow:
+    0 1px 0 rgba(255, 235, 0, 0.3),
+    0 -1px 0 rgba(255, 235, 0, 0.3);
+}
+
+/* Keyframe animation - sweeps left to right */
+@keyframes highlightSweep {
+  from {
+    transform: scaleX(0) skewX(-3deg);   /* Width 0, diagonal */
+  }
+  to {
+    transform: scaleX(1) skewX(-3deg);   /* Full width, maintains diagonal */
+  }
+}
+
+.hero-text p {
+  font-family: var(--font-serif);           /* Lora serif for body text */
+  font-size: 1.1rem;
+  color: var(--vox-text-dark);
+  opacity: 1;
+  line-height: 1.6;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  padding-left: 1.5rem;
+}
+
+/* ========================================
+   Search Bar Styles
+   ======================================== */
+
+.search-container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 3rem;                     /* Generous bottom spacing */
+  position: relative;
+  z-index: 1;                               /* Above overlay */
+}
+
+.search-form {
+  display: flex;
+  gap: 0;                                   /* No gap - buttons touch */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Search input field */
+.search-input {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--vox-bg-light);
+  border-right: none;                       /* Removed - connects to button */
+  border-radius: 2px 0 0 2px;              /* Rounded left corners only */
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  outline: none;
+  transition: border-color 0.2s ease;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.search-input:focus {
+  border-color: var(--vox-yellow);          /* Yellow border on focus */
+}
+
+/* Search submit button */
+.search-button {
+  padding: 1rem 2rem;
+  background-color: var(--vox-text-dark);
+  color: var(--vox-white);
+  border: none;
+  border-radius: 0 2px 2px 0;              /* Rounded right corners only */
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.search-button:hover {
+  background-color: var(--vox-yellow);      /* Yellow background on hover */
+  color: var(--vox-text-dark);
+}
+
+/* ========================================
+   Mobile Responsive Styles
+   ======================================== */
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 1.5rem 1.5rem 1.5rem;
+    min-height: 400px;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  /* Text constrained to 66% width for readability over background image */
+  .hero-text {
+    max-width: 66%;
+    text-align: left;
+    margin-bottom: 3rem;                    /* Spacing between text and search bar */
+  }
+
+  /* Smaller text on mobile */
+  .hero-text h1 {
+    font-size: 2.2rem;
+    padding-left: 1rem;
+  }
+
+  /* Thinner animated border on mobile */
+  .hero-text h1::before {
+    width: 4px;
+  }
+
+  /* Slightly less skew on mobile for better readability */
+  .highlight-text::before {
+    transform: scaleX(0) skewX(-2deg);     /* Less diagonal on small screens */
+    height: 60%;                           /* Slightly shorter */
+  }
+
+  @keyframes highlightSweep {
+    from {
+      transform: scaleX(0) skewX(-2deg);
+    }
+    to {
+      transform: scaleX(1) skewX(-2deg);
+    }
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+
+  .search-container {
+    padding-bottom: 2rem;
+  }
+
+  /* Stack search form vertically on mobile */
+  .search-form {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .search-input {
+    border-radius: 2px;                     /* Full border radius when stacked */
+    border: 2px solid var(--vox-bg-light);
+  }
+
+  .search-button {
+    border-radius: 2px;                     /* Full border radius when stacked */
+    width: 100%;
+  }
+}

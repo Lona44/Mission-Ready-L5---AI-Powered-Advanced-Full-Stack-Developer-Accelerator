@@ -1,0 +1,53 @@
+/**
+ * NewsGrid Component Styles
+ *
+ * Responsive CSS Grid layout for news articles.
+ * Transforms from 3 columns (desktop) → 2 columns (tablet) → 1 column (mobile).
+ */
+
+/* ========================================
+   Grid Section Container
+   ======================================== */
+
+.news-grid-section {
+  background-color: var(--vox-bg-light);
+  padding: 6rem 2rem 4rem 2rem;             /* Increased top padding for spacing from hero */
+}
+
+.news-grid-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ========================================
+   CSS Grid Layout
+   ======================================== */
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);    /* 3 equal columns on desktop */
+  gap: 2rem;
+}
+
+/* ========================================
+   Responsive Breakpoints
+   ======================================== */
+
+/* Tablet: 2-column layout */
+@media (max-width: 1024px) {
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);  /* 2 columns on tablet */
+  }
+}
+
+/* Mobile: Single column layout */
+@media (max-width: 768px) {
+  .news-grid-section {
+    padding: 4.5rem 1.5rem 3rem 1.5rem;    /* Adjusted padding for mobile */
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;             /* 1 column - cards stack vertically */
+    gap: 1.5rem;                            /* Smaller gap on mobile */
+  }
+}
