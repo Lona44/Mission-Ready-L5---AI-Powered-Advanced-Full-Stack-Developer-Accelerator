@@ -42,6 +42,24 @@ The layout adapts across device sizes:
 - Tablet (768px-1199px): Two-column grid, adjusted spacing
 - Mobile (<768px): Single column, stacked search form
 
+<br>
+<br>
+<br>
+
+Tablet View:
+
+<img width="829" height="927" alt="Screenshot 2025-10-17 at 3 42 42 PM" src="https://github.com/user-attachments/assets/71a9c8df-6633-4103-9be2-021e21e47fb8" />
+
+<br>
+<br>
+<br>
+
+Mobile View:
+
+<img width="505" height="916" alt="Screenshot 2025-10-17 at 3 45 08 PM" src="https://github.com/user-attachments/assets/794287ac-c5f4-4db3-a41e-d310f4bfc89f" />
+
+
+
 ### Interactive Animations
 - Yellow border grows from bottom to top on page load (1.2s)
 - Hand-drawn highlighter sweeps across featured text (1.5s, starts after border)
