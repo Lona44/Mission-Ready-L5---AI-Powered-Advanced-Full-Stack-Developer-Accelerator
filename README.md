@@ -250,8 +250,8 @@ The site uses a carefully selected font hierarchy imported from Google Fonts (in
 
 ### Responsive Breakpoints
 - Mobile: max-width 768px
-- Tablet: 769px to 1199px
-- Desktop: 1200px and above
+- Tablet: 769px to 1023px
+- Desktop: 1024px and above
 
 ---
 
