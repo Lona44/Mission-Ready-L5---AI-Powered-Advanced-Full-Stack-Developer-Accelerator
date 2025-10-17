@@ -9,7 +9,13 @@ A responsive digital news home page template built for Marketing Association New
 
 ## Project Overview
 
-This project is a prototype solution for Marketing Association NZ's digital news platform. The application showcases a clean, professional news listing interface inspired by Vox, featuring a hero section with integrated search and a responsive grid layout for news articles.
+This project is a prototype solution for Marketing Association NZ's digital news platform. The application showcases a clean, professional news listing interface inspired by Vox, featuring a hero section with integrated search and a responsive grid layout for news articles. 
+
+<br>
+Slides available at:
+<br>
+https://www.canva.com/design/DAG2ArGgjuE/5e1dE1Z8zzi2hvtd67HecQ/edit?utm_content=DAG2ArGgjuE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+<br>
 
 **Note**: This project is Mission 0 within the Mission Ready L5 Tech Career Accelerator programme. The repository is structured to contain multiple missions (Mission-0 through Mission-6), with each mission in its own folder.
 
