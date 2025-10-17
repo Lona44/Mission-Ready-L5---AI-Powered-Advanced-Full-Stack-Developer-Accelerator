@@ -44,8 +44,8 @@ A responsive React application featuring:
 
 ### Responsive Design
 The layout adapts across device sizes:
-- Desktop (1200px+): Three-column news grid, full hero
-- Tablet (768px-1199px): Two-column grid, adjusted spacing
+- Desktop (1024px+): Three-column news grid, full hero
+- Tablet (768px-1024px): Two-column grid, adjusted spacing
 - Mobile (<768px): Single column, stacked search form
 
 <br>
