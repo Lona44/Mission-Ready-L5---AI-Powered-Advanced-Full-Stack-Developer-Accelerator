@@ -1,3 +1,8 @@
+
+
+https://github.com/user-attachments/assets/c29eccb0-329e-4c71-85cc-5cdaa0027b65
+
+
 # Marketing Association NZ - Digital News Home Page
 
 A responsive digital news home page template built for Marketing Association New Zealand as part of the Mission Ready Tech Career Accelerator programme.
